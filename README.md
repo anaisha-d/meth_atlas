@@ -50,7 +50,7 @@ optional arguments:
 deconvolve.py -a reference_atlas.csv examples.csv
 ```
 will deconvolve all samples given as columns in *examples.csv*, dump the resulting coefficients to a csv file named *examples_deconv_output.csv*, plot them, and dump the figure to *examples_deconv_plot.png*.
-![Image of bar plot]([[https://github.com/nloyfer/meth_atlas/blob/master/examples_deconv_plot.png](https://github.com/anaisha-d/meth_atlas/blob/main/Meth%20Atlas.png](https://github.com/anaisha-d/meth_atlas/blob/8d7c4b89a2ae263b51f20ecf610f84901b6466d2/Meth%20Atlas.png)))
+![Image of bar plot](https://github.com/anaisha-d/meth_atlas/blob/main/Meth%20Atlas.png?raw=true)
 
 
 ### Pre-processing
