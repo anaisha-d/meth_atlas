@@ -1,8 +1,9 @@
 # Methylation Atlas Deconvolution
 
-This is a standalone program for [deconvolution of array methylome](https://www.nature.com/articles/s41467-018-07466-6)[1].
-It uses an input **reference atlas** file to deconvolve a given **sample**, or multiple samples.
-Outputs a csv file, and plots a stacked bars figure.
+This is built upon the Nature article [Comprehensive human cell-type methylation atlas reveals origins of circulating cell-free DNA in health and disease](https://www.nature.com/articles/s41467-018-07466-6). 
+
+This program an input **reference atlas** file to deconvolve a given **sample**, or multiple samples with three algorithms: non-negative least squares (NNLS), Deep Neural Network (DNN), and non-negative matrix factorization (NNMF). 
+It outputs a csv file and plots a stacked bars figure. 
 
 ### atlas
 A reference atlas file. 
@@ -24,8 +25,8 @@ An example dummy file is supplied, *examples.csv*.
 ### Usage
 
 ```
-usage: deconvolve.py [-h] [--atlas_path ATLAS_PATH] [--slim] [--plot]
-                     [--out_dir OUT_DIR]
+usage: meth_sig.py [-h] [--signature ATLAS_PATH] [--inputfile] 
+                     [--outfile OUT_NAME]
                      samples_path
 
 positional arguments:
@@ -34,27 +35,18 @@ positional arguments:
 
 optional arguments:
   -h, --help            show this help message and exit
-  --atlas_path ATLAS_PATH, -a ATLAS_PATH
-                        Path to Atlas csv file. The first column must be
-                        Illumina IDs (e.g cg00000029)
-  --slim                Write the results table *without indexes and header
-                        line*
-  --plot                Display the stacked bars figure
-  --out_dir OUT_DIR, -o OUT_DIR
-                        Output directory
+  --signature, -s
+                        Path to signature file
+  --outfile
+                        Out-file name of picture
+  --inputfile
+                        samples file path 
 ```
 
 ---
 ### Example
 ```
-deconvolve.py -a reference_atlas.csv examples.csv
+meth_sig.py --signature reference_atlas.csv -outfile out.png --inputfile  examples.csv
 ```
 will deconvolve all samples given as columns in *examples.csv*, dump the resulting coefficients to a csv file named *examples_deconv_output.csv*, plot them, and dump the figure to *examples_deconv_plot.png*.
 ![Image of bar plot](https://github.com/anaisha-d/meth_atlas/blob/main/Meth%20Atlas.png?raw=true)
-
-
-### Pre-processing
-We recommend pre-processing the IDAT files using the script and reference sample listed [here](https://github.com/nloyfer/meth_atlas/tree/master/pre_process#pre-processing).
-
-------------------
-[1]: Moss, J.; Magenheim, J.; Neiman, D.; Zemmour, H.; Loyfer, N.; Korach, A.; Samet, Y.; Maoz, M.; Druid, H.; Arner, P.; et al. Comprehensive human cell-type methylation atlas reveals origins of circulating cell-free DNA in health and disease. Nat. Commun. 2018, 9, 5068.
